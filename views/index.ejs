@@ -1,0 +1,24 @@
+<% include head %>
+  <div id="container" class="container-fluid">
+	<div class="row">
+	<div class="col-sm-3 col-md-2 sidebar">
+	  <% include nav %>
+	</div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+	  <a class="btn btn-success" href="random" role="button">Random</a>
+	<br /><br />
+	<table class="table">
+	  <% for(var i=0; i<mdList.length; i++) { %>
+	    <tr>
+		  <td><%= i %></td>
+	      <td><a href="/articles/<%= i %>"><%= parser(mdList[i]).name %></a></td>
+		  <td><%= fsStatSync('./posts/'+mdList[i]).mtime %></td>
+	    </tr>
+	  <% } %>
+    </table>
+  </div>
+  </div>
+  </div>
+<% include foot %>
