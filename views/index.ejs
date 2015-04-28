@@ -7,14 +7,14 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-	  <a class="btn btn-success" href="random" role="button">Random</a>
+	  <a class="btn btn-success" href="/articles/random" role="button">Random</a>
 	<br /><br />
 	<table class="table">
-	  <% for(var i=0; i<mdList.length; i++) { %>
+	  <% for(var i=0; i<articleList.length; i++) { %>
 	    <tr>
 		  <td><%= i %></td>
-	      <td><a href="/articles/<%= i %>"><%= parser(mdList[i]).name %></a></td>
-		  <td><%= fsStatSync('./posts/'+mdList[i]).mtime %></td>
+	      <td><a href="/articles/<%= i %>"><%= parser(articleList[i]).name %></a></td>
+		  <td><%= fsStatSync('./posts/'+articleList[i]).mtime %></td>
 	    </tr>
 	  <% } %>
     </table>
