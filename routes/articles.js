@@ -23,10 +23,10 @@ router.get('/:no', function(req, res, next) {
 
   fs.readFile('./posts/'+filename, 'utf-8', function(err, data) {
 	if(err){
-	  res.render('error', {message: 'Error!', error: err});
+	  res.render('error_real', { title: 'Error', error: err });
 	  console.log(err);
 	} else {
-	  res.render('post', { title: path.parse(filename).name, article: markdown.toHTML(data)});
+	  res.render('post', { title: path.parse(filename).name, article: markdown.toHTML(data) });
 	}
   })
 });

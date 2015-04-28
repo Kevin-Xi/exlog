@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/about', function(req, res, next) {
-  res.render('about', {statAbout: "active", statHome: "", title: "About Kevin"});
+  res.render('about', { statAbout: "active", statHome: "", title: "About Kevin" });
 });
 
 module.exports = router;
