@@ -29,13 +29,11 @@ var articleList = function() {
 	update: update,
 	get: get
   });
-}
+}();
 
-module.exports = {
-  list: articleList()
+module.exports = articleList;
   //updateArticleList: articleList().update,
   //getArticleList: articleList().get
-}
 /*
  * Version 1
  * Use ASync for everything

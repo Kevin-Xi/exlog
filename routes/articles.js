@@ -5,11 +5,12 @@ var fs = require('fs');
 var path = require('path');
 var markdown = require('markdown').markdown;
 
-var articleList= require('../modules/articles/articleList');
+//var articleList= require('../modules/articles/articleList');
+var articleList = require('./index').articleList;
 
 /* GET users listing. */
 router.get('/random', function(req, res, next) {
-  var rand = Math.floor(Math.random()*(articleList.list.get().length-1));
+  var rand = Math.floor(Math.random()*(articleList.get().length-1));
   res.redirect('/articles/'+rand);
 });
 
@@ -19,7 +20,7 @@ router.post('/:no', function(req, res, next) {
 });
 
 router.get('/:no', function(req, res, next) {
-  var filename = (articleList.list.get())[req.params.no];
+  var filename = (articleList.get())[req.params.no];
 
   fs.readFile('./posts/'+filename, 'utf-8', function(err, data) {
 	if(err){
