@@ -1,0 +1,23 @@
+<% include head %>
+<div id="container" class="container-fluid">
+<form id='logout' method='post' action='/logout'>
+<input type='submit' />
+</form>
+<p>You will logout in <span id='leftSecond'>3</span> second(s).
+
+<script>
+var button = document.getElementById('logout');
+button.style.display='none';
+var second = document.getElementById('leftSecond').innerText;
+setInterval('logout()', 1000);
+
+function logout() {
+  if(second < 1) {
+    button.submit();
+  } else {
+    document.getElementById('leftSecond').innerText = --second;
+  }
+}
+</script>
+</div>
+<% include foot %>

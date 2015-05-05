@@ -8,8 +8,23 @@ var markdown = require('markdown').markdown;
 //var articleList= require('../modules/articles/articleList');
 var articleList = require('./index').articleList;
 
+var checkLogin = function(req, res, next) {
+  console.log('inside checkLogin');
+  console.log(req.cookies);
+  if(!req.cookies || !req.cookies.exaccess || req.cookies.exaccess!=='AOK') {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+}
+
+router.all('/*', checkLogin, function(req, res, next) {
+  next();
+});
+
 /* GET users listing. */
 router.get('/random', function(req, res, next) {
+  console.log('inside random');
   var rand = Math.floor(Math.random()*(articleList.get().length-1));
   res.redirect('/articles/'+rand);
 });

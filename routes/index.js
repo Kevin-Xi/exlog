@@ -29,6 +29,24 @@ router.get('/showdoc', function(req, res, next) {
   });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login')
+})
+
+router.post('/login', function(req, res, next) {
+  res.cookie('exaccess', 'AOK');
+  res.redirect('/about');
+})
+
+router.get('/logout', function(req, res, next) {
+  res.render('logout', { title: 'Logout' });
+})
+
+router.post('/logout', function(req, res, next) {
+  res.cookie('exaccess', '');
+  res.redirect('/');
+})
+
 module.exports = {
   router: router,
   articleList: articleList
